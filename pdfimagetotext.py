@@ -25,13 +25,14 @@ def string_var_to_word_doc(var_string):
     doc.add_paragraph(var_string)
 
     # Save the document
-    doc.save('tests/white-fang.docx')
+    doc.save('tests/Brewster_July_2024_financials.docx')
 
     print("Document saved successfully.")
 
 
 ##MAIN##
-path_to_pdf = '/Users/eacalder/Documents/Github/pdftotext/tests/white-fang.pdf'
+# path_to_pdf = '/Users/eacalder/Documents/Github/pdftotext/tests/white-fang.pdf'
+path_to_pdf = '/Users/eacalder/Documents/brewster/financials/Brewster_July_2024_financials.pdf'
 
 stinrg_variable = get_text_from_any_pdf(path_to_pdf)
 print(stinrg_variable)
