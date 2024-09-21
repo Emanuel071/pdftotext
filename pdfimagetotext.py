@@ -37,7 +37,7 @@ def string_var_to_word_doc(var_string):
 # path_to_pdf = '/Users/eacalder/Documents/Github/pdftotext/tests/output_page_2.pdf'
 # path_to_pdf = '/Users/eacalder/Documents/brewster/financials/Brewster_May_Financials_2024.pdf'
 # path_to_pdf = '/Users/eacalder/Documents/brewster/financials/Brewster_March_2024_Financials.pdf'
-path_to_pdf = '/Users/eacalder/Documents/brewster/financials/Brewster_June_financials_2024.pdf'
+path_to_pdf = '/Users/eacalder/Documents/brewster/financials/Brewster_June_financials_2024.pdf' #the one that is not working 
 # path_to_pdf = '/Users/eacalder/Documents/brewster/financials/Brewster_July_2024_financials.pdf'
 # path_to_pdf = '/Users/eacalder/Documents/brewster/financials/Brewster_April_2024_Financials.pdf'
 # path_to_pdf = '/Users/eacalder/Documents/brewster/financials/Brewster_Feb_2024_financials.pdf'
