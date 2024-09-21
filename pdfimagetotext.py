@@ -35,10 +35,13 @@ def string_var_to_word_doc(var_string):
 
 ##MAIN##
 # path_to_pdf = '/Users/eacalder/Documents/Github/pdftotext/tests/output_page_2.pdf'
+# path_to_pdf = '/Users/eacalder/Documents/brewster/financials/Brewster_May_Financials_2024.pdf'
+# path_to_pdf = '/Users/eacalder/Documents/brewster/financials/Brewster_March_2024_Financials.pdf'
+path_to_pdf = '/Users/eacalder/Documents/brewster/financials/Brewster_June_financials_2024.pdf'
 # path_to_pdf = '/Users/eacalder/Documents/brewster/financials/Brewster_July_2024_financials.pdf'
 # path_to_pdf = '/Users/eacalder/Documents/brewster/financials/Brewster_April_2024_Financials.pdf'
 # path_to_pdf = '/Users/eacalder/Documents/brewster/financials/Brewster_Feb_2024_financials.pdf'
-path_to_pdf = '/Users/eacalder/Documents/brewster/financials/Brewster_January_2024_Financials.pdf'
+# path_to_pdf = '/Users/eacalder/Documents/brewster/financials/Brewster_January_2024_Financials.pdf'
 
 text_BS = get_text_from_any_pdf(path_to_pdf)
 
@@ -52,51 +55,119 @@ cleaned_list_BS = [item for item in list_BS if item]
 balance_sheet_dict = {}
 print(f"length dict: {len(balance_sheet_dict)}")
 
+if any(char.isdigit() for char in cleaned_list_BS[5]):
+    print("here")
+    if len(balance_sheet_dict) < 1:
+        #ASSETS 
+        # NAMING SETUP
+        Operating_Checking        = cleaned_list_BS[5].rsplit(' ', 1)
+        Reserve                   = cleaned_list_BS[8].rsplit(' ', 1)
+        Accounts_Receivable       = cleaned_list_BS[11].rsplit(' ', 1)
+        Washers_Dryers            = cleaned_list_BS[14].rsplit(' ', 1)
+        Machinery_EQ              = cleaned_list_BS[15].rsplit(' ', 1)
+        Loan_Fees                 = cleaned_list_BS[16].rsplit(' ', 1)
+        Prepaid_Insurance         = cleaned_list_BS[19].rsplit(' ', 1)
 
-if len(balance_sheet_dict) < 1:
-    #ASSETS 
-    # NAMING SETUP
-    Operating_Checking        = cleaned_list_BS[5]
-    Reserve                   = cleaned_list_BS[7]
-    Accounts_Receivable       = cleaned_list_BS[10]
-    Washers_Dryers            = cleaned_list_BS[14]
-    Machinery_EQ              = cleaned_list_BS[15]
-    Loan_Fees                 = cleaned_list_BS[16]
-    Prepaid_Insurance         = cleaned_list_BS[19]
+
+        balance_sheet_dict[Operating_Checking[0]] = Operating_Checking[1]
+        balance_sheet_dict[Reserve[0]] = Reserve[1]
+        balance_sheet_dict[Accounts_Receivable[0]] = Accounts_Receivable[1]
+        balance_sheet_dict[Washers_Dryers[0]] = Washers_Dryers[1]
+        balance_sheet_dict[Machinery_EQ[0]] = Machinery_EQ[1]
+        balance_sheet_dict[Loan_Fees[0]] = Loan_Fees[1]
+        balance_sheet_dict[Prepaid_Insurance[0]] = Prepaid_Insurance[1]
+
+        #LIABILITIES 
+        Loan_Payable                 = cleaned_list_BS[24].rsplit(' ', 1)
+        Prepaid_Common_Fees          = cleaned_list_BS[25].rsplit(' ', 1)
+        Accounts_Payable             = cleaned_list_BS[26].rsplit(' ', 1)
+        Insurance_Proceeds           = cleaned_list_BS[27].rsplit(' ', 1)
+
+        balance_sheet_dict[Loan_Payable[0]] = Loan_Payable[1]
+        balance_sheet_dict[Prepaid_Common_Fees[0]] = Prepaid_Common_Fees[1]
+        balance_sheet_dict[Accounts_Payable[0]] = Accounts_Payable[1]
+        balance_sheet_dict[Insurance_Proceeds[0]] = Insurance_Proceeds[1]
+
+        #EQUITY
+        Fund_Balance                 = cleaned_list_BS[30].rsplit(' ', 1)
+        Reserve_Retained_Earnings    = cleaned_list_BS[31].rsplit(' ', 1)
+        Net_Income                   = cleaned_list_BS[32].rsplit(' ', 1)
+
+        balance_sheet_dict[Fund_Balance[0]] = Fund_Balance[1]
+        balance_sheet_dict[Reserve_Retained_Earnings[0]] = Reserve_Retained_Earnings[1]
+        balance_sheet_dict[Net_Income[0]] = Net_Income[1]
+
+        print(balance_sheet_dict)
+
+else:
+    if len(balance_sheet_dict) < 1:
+        #ASSETS 
+        # NAMING SETUP
+        Operating_Checking        = cleaned_list_BS[5]
+        Reserve                   = cleaned_list_BS[7]
+        Accounts_Receivable       = cleaned_list_BS[10]
+        Washers_Dryers            = cleaned_list_BS[14]
+        Machinery_EQ              = cleaned_list_BS[15]
+        Loan_Fees                 = cleaned_list_BS[16]
+        Prepaid_Insurance         = cleaned_list_BS[19]
+
+        #LIABILITIES 
+        Loan_Payable                 = cleaned_list_BS[24]
+        Prepaid_Common_Fees          = cleaned_list_BS[25]
+        Accounts_Payable             = cleaned_list_BS[26]
+        Insurance_Proceeds           = cleaned_list_BS[27]
+
+        #EQUITY
+        Fund_Balance                 = cleaned_list_BS[30]
+        Reserve_Retained_Earnings    = cleaned_list_BS[31]
+        Net_Income                   = cleaned_list_BS[32]
+
+        #ASSETS 
+    # VALUE SETUP LOOPING
+    balance_sheet_dict[Operating_Checking] = cleaned_list_BS[35]
+    balance_sheet_dict[Reserve] = cleaned_list_BS[37]
+    balance_sheet_dict[Accounts_Receivable] = cleaned_list_BS[39]
+    balance_sheet_dict[Washers_Dryers] = cleaned_list_BS[41]
+    balance_sheet_dict[Machinery_EQ] = cleaned_list_BS[42]
+    balance_sheet_dict[Loan_Fees] = cleaned_list_BS[43]
+    balance_sheet_dict[Prepaid_Insurance] = cleaned_list_BS[45]
 
     #LIABILITIES 
-    Loan_Payable                 = cleaned_list_BS[24]
-    Prepaid_Common_Fees          = cleaned_list_BS[25]
-    Accounts_Payable             = cleaned_list_BS[26]
-    Insurance_Proceeds           = cleaned_list_BS[27]
+    balance_sheet_dict[Loan_Payable] = cleaned_list_BS[47]
+    balance_sheet_dict[Prepaid_Common_Fees] = cleaned_list_BS[48]
+    balance_sheet_dict[Accounts_Payable] = cleaned_list_BS[49]
+    balance_sheet_dict[Insurance_Proceeds] = cleaned_list_BS[50]
 
     #EQUITY
-    Fund_Balance                 = cleaned_list_BS[30]
-    Reserve_Retained_Earnings    = cleaned_list_BS[31]
-    Net_Income                   = cleaned_list_BS[32]
+    balance_sheet_dict[Fund_Balance] = cleaned_list_BS[52]
+    balance_sheet_dict[Reserve_Retained_Earnings] = cleaned_list_BS[53]
+    balance_sheet_dict[Net_Income] = cleaned_list_BS[54]
 
-#ASSETS 
-# VALUE SETUP LOOPING
-balance_sheet_dict[Operating_Checking] = cleaned_list_BS[35]
-balance_sheet_dict[Reserve] = cleaned_list_BS[37]
-balance_sheet_dict[Accounts_Receivable] = cleaned_list_BS[39]
-balance_sheet_dict[Washers_Dryers] = cleaned_list_BS[41]
-balance_sheet_dict[Machinery_EQ] = cleaned_list_BS[42]
-balance_sheet_dict[Loan_Fees] = cleaned_list_BS[43]
-balance_sheet_dict[Prepaid_Insurance] = cleaned_list_BS[45]
+    print(balance_sheet_dict)
 
-#LIABILITIES 
-balance_sheet_dict[Loan_Payable] = cleaned_list_BS[47]
-balance_sheet_dict[Prepaid_Common_Fees] = cleaned_list_BS[48]
-balance_sheet_dict[Accounts_Payable] = cleaned_list_BS[49]
-balance_sheet_dict[Insurance_Proceeds] = cleaned_list_BS[50]
+# if len(balance_sheet_dict) < 1:
+#     #ASSETS 
+#     # NAMING SETUP
+#     Operating_Checking        = cleaned_list_BS[5]
+#     Reserve                   = cleaned_list_BS[7]
+#     Accounts_Receivable       = cleaned_list_BS[10]
+#     Washers_Dryers            = cleaned_list_BS[14]
+#     Machinery_EQ              = cleaned_list_BS[15]
+#     Loan_Fees                 = cleaned_list_BS[16]
+#     Prepaid_Insurance         = cleaned_list_BS[19]
 
-#EQUITY
-balance_sheet_dict[Fund_Balance] = cleaned_list_BS[52]
-balance_sheet_dict[Reserve_Retained_Earnings] = cleaned_list_BS[53]
-balance_sheet_dict[Net_Income] = cleaned_list_BS[54]
+#     #LIABILITIES 
+#     Loan_Payable                 = cleaned_list_BS[24]
+#     Prepaid_Common_Fees          = cleaned_list_BS[25]
+#     Accounts_Payable             = cleaned_list_BS[26]
+#     Insurance_Proceeds           = cleaned_list_BS[27]
 
-print(balance_sheet_dict)
+#     #EQUITY
+#     Fund_Balance                 = cleaned_list_BS[30]
+#     Reserve_Retained_Earnings    = cleaned_list_BS[31]
+#     Net_Income                   = cleaned_list_BS[32]
+
+
 '''
 # print(list_BS)
 
